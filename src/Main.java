@@ -3,12 +3,45 @@ import product.ProductSet;
 import recipe.Recipe;
 import recipe.RecipeSet;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Main {
+
+    static Map<String, Integer> map = new HashMap<>();
+
     public static void main(String[] args) {
 
         task1();
         task2();
+        taks3();
+    }
 
+
+    public static void addNode(String key, Integer value) {
+        if (!map.containsKey(key) || !map.containsValue(value)){
+            map.put(key, value);
+        } else if (map.containsKey(key) && map.containsValue(value) ) {
+            throw new IllegalArgumentException("В мапе не может быть 2х одинаковых пар");
+        }
+    }
+
+    public static String toStringMap(Map<String, Integer> map) {
+        StringBuilder builder = new StringBuilder();
+        for (Map.Entry<String, Integer> entry : map.entrySet()) {
+            builder.append(entry.getKey()).append(" ---> ").append(entry.getValue()).append("\n");
+        }
+        return builder.toString();
+    }
+
+    private static void taks3() {
+        System.out.println("\n Часть1. Задание 3:");
+
+        addNode("str1", 2);
+        addNode("str2", 1);
+        //addNode("str1", 2); //  В мапе не может быть 2х одинаковых пар
+        addNode("str1", 5);
+        System.out.println(toStringMap(map));
     }
 
     private static void task1() {

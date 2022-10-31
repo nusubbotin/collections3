@@ -29,7 +29,7 @@ public class ProductSet {
     public String toString() {
         StringBuilder builder = new StringBuilder();
         for (Map.Entry<Product, Float> entry : productSet.entrySet()) {
-            builder.append(entry.getKey().getName()).append(" ---> ").append(entry.getValue());
+            builder.append(entry.getKey().getName()).append(" ---> ").append(entry.getValue()).append("\n");
         }
         return builder.toString();
     }

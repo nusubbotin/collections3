@@ -3,8 +3,11 @@ import product.ProductSet;
 import recipe.Recipe;
 import recipe.RecipeSet;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Main {
 
@@ -14,7 +17,45 @@ public class Main {
 
         task1();
         task2();
-        taks3();
+        task3();
+        task4();
+    }
+
+    private static void task4() {
+        System.out.println("\n Часть2. Задание 1:");
+
+        Map<String, List<Integer>> map = new HashMap<>();
+        for (int i = 0; i < 5; i++) {
+            map.put("strint"+(i+1), new ArrayList<>(List.of(ThreadLocalRandom.current().nextInt(0, 1000), ThreadLocalRandom.current().nextInt(0, 1000), ThreadLocalRandom.current().nextInt(0, 1000))));
+        }
+
+
+        StringBuilder builder = new StringBuilder();
+        for (Map.Entry<String, List<Integer>> entry : map.entrySet()) {
+            builder.append(entry.getKey()).append(" ---> ");
+            for (Integer num : entry.getValue()) {
+                builder.append(num).append(",");
+            }
+            builder.append("\n");
+        }
+        System.out.println(builder.toString());
+
+        Map<String, Integer> mapInt = new HashMap<>();
+        Integer sum;
+        for (Map.Entry<String, List<Integer>> entry : map.entrySet()) {
+            sum = 0;
+            for (Integer num : entry.getValue()) {
+                sum += num;
+            }
+            mapInt.put(entry.getKey(), sum);
+        }
+
+        builder = new StringBuilder();
+        for (Map.Entry<String, Integer> entry : mapInt.entrySet()) {
+           builder.append(entry.getKey()).append(" ---> ").append(entry.getValue()).append("\n");
+        }
+        System.out.println(builder.toString());
+
     }
 
 
@@ -34,7 +75,7 @@ public class Main {
         return builder.toString();
     }
 
-    private static void taks3() {
+    private static void task3() {
         System.out.println("\n Часть1. Задание 3:");
 
         addNode("str1", 2);

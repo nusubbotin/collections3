@@ -3,10 +3,7 @@ import product.ProductSet;
 import recipe.Recipe;
 import recipe.RecipeSet;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Main {
@@ -19,6 +16,22 @@ public class Main {
         task2();
         task3();
         task4();
+        task5();
+    }
+
+    private static void task5() {
+        System.out.println("\n Часть2. Задание 2:");
+
+        Map<Integer, String> map = new LinkedHashMap<>();
+        for (int i = 0; i < 10; i++) {
+            map.put(ThreadLocalRandom.current().nextInt(0, 1000), "strint" + (i + 1));
+        }
+
+        StringBuilder builder = new StringBuilder();
+        for (Map.Entry<Integer, String> entry : map.entrySet()) {
+            builder.append(entry.getKey()).append(" ---> ").append(entry.getValue()).append("\n");
+        }
+        System.out.println(builder.toString());
     }
 
     private static void task4() {
